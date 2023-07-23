@@ -1,0 +1,37 @@
+# Define a function to convert a binary number to decimal
+def binary_to_decimal(binary):
+  # Initialize the result to 0
+  result = 0
+  # Initialize the power to 0
+  power = 0
+  # Loop through the binary number from right to left
+  for i in range(len(binary) - 1, -1, -1):
+    # Add the current digit to the result
+    result += int(binary[i]) * (2 ** power)
+    # Increment the power
+    power += 1
+  # Return the result
+  return result
+
+# Define a function to convert a decimal number to binary
+def decimal_to_binary(decimal):
+  # Initialize the result to an empty string
+  result = ""
+  # Keep looping until the decimal number is 0
+  while decimal > 0:
+    # Append the remainder to the result
+    result += str(decimal % 2)
+    # Divide the decimal number by 2
+    decimal //= 2
+  # Reverse the result and return it
+  return result[::-1]
+
+# Test the functions
+binary1 = "1010"
+binary2 = "1111"
+decimal1 = 10
+decimal2 = 15
+print(binary_to_decimal(binary1))  # Output: 10
+print(binary_to_decimal(binary2))  # Output: 15
+print(decimal_to_binary(decimal1))  # Output: "1010"
+print(decimal_to_binary(decimal2))  # Output: "1111"

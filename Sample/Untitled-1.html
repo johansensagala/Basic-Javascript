@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot Sederhana</title>
+  <!-- <style>
+    /* Style untuk container chat */
+    .chat-container {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #ccc;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+
+    /* Style untuk pesan dari chatbot */
+    .chat-container .bot {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    /* Style untuk pesan dari user */
+    .chat-container .user {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+  </style> -->
+  <style>
+    /* Style untuk container chat */
+.chat-container {
+  width: 500px;
+  height: 500px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+/* Style untuk pesan dari chatbot */
+.chat-container .bot {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Style untuk pesan dari user */
+.chat-container .user {
+  text-align: right;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Style untuk form input */
+#chat-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#chat-input {
+  flex-grow: 1;
+  margin-right: 10px;
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  font-size: 18px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+  </style>
+</head>
+<body>
+  <!-- Container chat -->
+  <div class="chat-container">
+    <div class="bot">Halo, apa yang bisa saya bantu?</div>
+  </div>
+
+  <!-- Form input untuk mengirim pesan -->
+  <form id="chat-form">
+    <input type="text" id="chat-input" autocomplete="off">
+    <button type="submit">Kirim</button>
+  </form>
+
+  <script>
+    // Ambil elemen form dan container chat
+    const chatForm = document.getElementById('chat-form');
+    const chatContainer = document.querySelector('.chat-container');
+
+    // Tambahkan event listener untuk form
+    chatForm.addEventListener('submit', e => {
+      // Hindari refresh halaman saat form dikirim
+      e.preventDefault();
+
+      // Ambil input dari user
+      const chatInput = document.getElementById('chat-input').value;
+
+      // Tambahkan pesan user ke container chat
+      const userMessage = document.createElement('div');
+      userMessage.classList.add('user');
+      userMessage.innerHTML = chatInput;
+chatContainer.appendChild(userMessage);
+// Bersihkan input user
+document.getElementById('chat-input').value = '';
+
+// Scroll ke bawah untuk menampilkan pesan terbaru
+chatContainer.scrollTop = chatContainer.scrollHeight;
+
+
+
+// Simulasikan jawaban dari chatbot
+setTimeout(() => {
+  const botMessage = document.createElement('div');
+  botMessage.classList.add('bot');
+  botMessage.innerHTML = handleResponse(chatInput);
+  chatContainer.appendChild(botMessage);
+
+  // Scroll ke bawah untuk menampilkan pesan terbaru
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}, 1000);
+
+});
+
+function handleResponse(message) {
+  // Menangani berbagai jenis pesan dari user dan memberikan respon sesuai
+  if (message.toLowerCase() === 'halo') {
+    chatContainer.innerHTML += `<p>Halo juga! Apa kabar hari ini?</p>`;
+  } else if (message.toLowerCase() === 'baik') {
+    chatContainer.innerHTML += `<p>Senang mendengarnya. Apa yang bisa saya bantu?</p>`;
+  } else if (message.toLowerCase() === 'dimana kamu tinggal?') {
+    chatContainer.innerHTML += `<p>Saya tinggal di dunia maya. Tidak memiliki tempat tinggal fisik yang pasti.</p>`;
+  } else {
+    chatContainer.innerHTML += `<p>Maaf, saya tidak mengerti apa yang Anda maksud. Silakan coba lagi.</p>`;
+  }
+  return response;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialogue Box</title>
+</head>
+<body>
+    <b><span id="name"></span>, anda <span id="answer"></span> masuk kedalam bioskop.</b>
+
+    <script>
+        var nama = prompt('Masukkan nama anda:');
+        var umur = prompt('Masukkan umur anda:');
+
+        var decision = (umur >= 18);
+        document.getElementById("name").innerHTML = nama;
+
+        if (decision == true) {
+            document.getElementById("answer").innerHTML = "diperbolehkan";
+        }
+        else {
+            document.getElementById("answer").innerHTML = "tidak diperbolehkan";
+        }
+    </script>
+
+</script>
+</body>
+</html> 
